@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-return<h1>hello world</h1>
+return <div>
+  <hi>Hello Earth</hi>
+  <button>increment</button>
+
+</div>
+
 }
 
 export default App

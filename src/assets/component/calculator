@@ -1,0 +1,81 @@
+// src/components/Calculator.js
+import React, { useState } from 'react';
+
+const Calculator = () => {
+  const [num1, setNum1] = useState('');
+  const [num2, setNum2] = useState('');
+  const [result, setResult] = useState(0);
+
+  const handleCalculation = (operator) => {
+    const number1 = parseFloat(num1);
+    const number2 = parseFloat(num2);
+    let calcResult;
+
+    switch (operator) {
+      case '+':
+        calcResult = number1 + number2;
+        break;
+      case '-':
+        calcResult = number1 - number2;
+        break;
+      case '*':
+        calcResult = number1 * number2;
+        break;
+      case '/':
+        calcResult = number2 !== 0 ? number1 / number2 : 'Error (divide by 0)';
+        break;
+      default:
+        calcResult = 0;
+    }
+
+    setResult(calcResult);
+  };
+
+  return (
+    <div style={styles.calculator}>
+      <h2>Calculator</h2>
+      <input
+        style={styles.input}
+        type="number"
+        value={num1}
+        onChange={(e) => setNum1(e.target.value)}
+        placeholder="Enter number 1"
+      />
+      <input
+        style={styles.input}
+        type="number"
+        value={num2}
+        onChange={(e) => setNum2(e.target.value)}
+        placeholder="Enter number 2"
+      />
+      <div>
+        <button style={styles.button} onClick={() => handleCalculation('+')}>+</button>
+        <button style={styles.button} onClick={() => handleCalculation('-')}>-</button>
+        <button style={styles.button} onClick={() => handleCalculation('*')}>*</button>
+        <button style={styles.button} onClick={() => handleCalculation('/')}>/</button>
+      </div>
+      <h3>Result: {result}</h3>
+    </div>
+  );
+};
+
+const styles = {
+  calculator: {
+    marginTop: '20px',
+    textAlign: 'center',
+  },
+  button: {
+    margin: '5px',
+    padding: '10px',
+    cursor: 'pointer',
+    fontSize: '18px',
+  },
+  input: {
+    margin: '5px',
+    padding: '10px',
+    fontSize: '18px',
+    width: '100px',
+  },
+};
+
+export default Calculator;
